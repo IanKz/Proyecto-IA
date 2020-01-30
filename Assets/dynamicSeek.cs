@@ -28,19 +28,6 @@ public class dynamicSeek : MonoBehaviour
         this.getSteering();
     }
 
-
-    void getNewOrientation(Vector3 direction){
-
-        if (direction.magnitude > 0){
-
-            rotationVector = agent.transform.rotation.eulerAngles;
-            rotationVector.z += (float)Math.Sin(-direction[0]*(Math.PI / 180))/(float)Math.Cos(direction[2]*(Math.PI / 180));
-            agent.transform.rotation = Quaternion.Euler(rotationVector);
-
-        }
-
-    }
-
     public void getSteering(){
 
         agent.steering.linear = target.transform.position - agent.transform.position;
@@ -48,6 +35,8 @@ public class dynamicSeek : MonoBehaviour
         agent.steering.linear.Normalize();
 
         agent.steering.linear *= (float)maxAcceleration; 
+
+        agent.transform.rotation = agent.newOrientation(agent.transform.rotation, agent.steering.linear);
 
     }
     

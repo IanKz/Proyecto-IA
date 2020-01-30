@@ -7,8 +7,8 @@ public class Pursue : MonoBehaviour
 
 	public double maxPrediction;
 	double prediction;
-	GameObject agent;
-	GameObject target;
+	public Agent agent;
+	public Agent target;
 	Vector3 direction;
 	double distance;
 	Vector3 lastTargetPosition;
@@ -24,9 +24,7 @@ public class Pursue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    	agent = GameObject.Find("agent");
-    	target = GameObject.Find("target");
+
    		time = Time.deltaTime;
    		lastAgentPosition = agent.transform.position;
    		lastTargetPosition = target.transform.position;
@@ -42,6 +40,7 @@ public class Pursue : MonoBehaviour
 
     	direction = target.transform.position - agent.transform.position;
     	distance = direction.magnitude;
+        agent.transform.rotation = agent.newOrientation(agent.transform.rotation, direction);
 
     	velocity = new Vector3((float)(difAgent[0]/time), (float)(difAgent[1]/time), (float)(difAgent[2]/time));
     	velocity2 = new Vector3((float)(difTarget[0]/time), (float)(difTarget[1]/time), (float)(difTarget[2]/time));
@@ -66,6 +65,7 @@ public class Pursue : MonoBehaviour
 
     	lastAgentPosition = agent.transform.position;
     	lastTargetPosition = target.transform.position;
+
 
     }
 

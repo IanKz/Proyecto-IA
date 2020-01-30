@@ -21,7 +21,7 @@ public class Arrive : MonoBehaviour
 
     	direction = target.transform.position - agent.transform.position;
 
-        getNewOrientation(direction);
+        agent.transform.rotation = agent.newOrientation(agent.transform.rotation, direction);
 
     	if ((Math.Abs(direction.x) + Math.Abs(direction.y) + Math.Abs(direction.z)) < radius){
 
@@ -47,18 +47,6 @@ public class Arrive : MonoBehaviour
     	agent.transform.position += new Vector3((float)0.1*direction[0], (float)0.1*direction[1], (float)0.1*direction[2]);
 
         
-    }
-
-    void getNewOrientation(Vector3 direction){
-
-        if (direction.magnitude > 0){
-
-            rotationVector = agent.transform.rotation.eulerAngles;
-            rotationVector.z += (float)Math.Sin(-direction[0]*(Math.PI / 180))/(float)Math.Cos(direction[2]*(Math.PI / 180));
-            agent.transform.rotation = Quaternion.Euler(rotationVector);
-
-        }
-
     }
 
 }

@@ -35,7 +35,7 @@ public class dynamicArriving : MonoBehaviour
     {
 
     	direction = target.transform.position - agent.transform.position;
-      getNewOrientation(direction);
+
     	distance = direction.magnitude;
 
     	if (distance < targetRadius){
@@ -70,18 +70,7 @@ public class dynamicArriving : MonoBehaviour
    		velocity += new Vector3((float)time*linear[0], (float)time*linear[1], (float)time*linear[2]);
    		agent.transform.position += new Vector3((float)time*velocity[0], (float)time*velocity[1], (float)time*velocity[2]);
         
-    }
-
-    void getNewOrientation(Vector3 direction){
-
-      if (direction.magnitude > 0){
-
-        rotationVector = agent.transform.rotation.eulerAngles;
-        rotationVector.z += (float)Math.Sin(-direction[0]*(Math.PI / 180))/(float)Math.Cos(direction[2]*(Math.PI / 180));
-        agent.transform.rotation = Quaternion.Euler(rotationVector);
-
-      }
-
+      agent.transform.rotation = agent.newOrientation(agent.transform.rotation, direction);
     }
 
 }

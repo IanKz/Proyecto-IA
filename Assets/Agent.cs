@@ -5,7 +5,7 @@ using UnityEngine;
 public class Agent : MonoBehaviour
 {
 	
-	public Vector3 position;
+	Vector3 position;
 	public Vector3 velocity;
 	public float rotation;
     public JumpPoint jp = new JumpPoint();
@@ -70,7 +70,7 @@ public class Agent : MonoBehaviour
 
                 if (distJumpPad < midPointJump){
 
-                    transform.localScale += new Vector3(transform.position.z*0.01f, transform.position.z*0.01f, 0);
+                    transform.localScale += new Vector3(transform.position.z*0.05f, transform.position.z*0.05f, 0);
 
                 }
                 else if (distJumpPad > 2*midPointJump) { 
@@ -83,7 +83,7 @@ public class Agent : MonoBehaviour
                 }
                 else{
 
-                    transform.localScale -= new Vector3(transform.position.z*0.01f, transform.position.z*0.01f, 0);
+                    transform.localScale -= new Vector3(transform.position.z*0.05f, transform.position.z*0.05f, 0);
 
                 }
 
@@ -92,5 +92,17 @@ public class Agent : MonoBehaviour
         }  
         
 	}
+
+
+    public Quaternion newOrientation(Quaternion current, Vector3 velocity){
+        // Make sure we have a velocity.
+        if (velocity.magnitude > 0){
+            // Calculate orientation from the velocity.
+            return Quaternion.Euler(current.x,current.y,Mathf.Atan2(-velocity.x, velocity.y)*Mathf.Rad2Deg);
+        } else {
+            return current;
+        }
+    } 
+
 
 }
