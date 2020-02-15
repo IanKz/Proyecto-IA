@@ -13,64 +13,20 @@ public class dynamicArriving : MonoBehaviour
 	public double targetRadius = 0.1;
 	public double slowRadius = 15;
 	public double timeToTarget = 1;
-	Vector3 direction;
-	double distance;
-	double targetSpeed;
-	Vector3 targetVelocity;
-	Vector3 linear;
-	Vector3 velocity;
-	double time;
-  Vector3 rotationVector;
+  dArriveComp dArrive;
 
     // Start is called before the first frame update
     void Start()
     {
 
-     	time = Time.deltaTime;
+     	dArrive = new dArriveComp(agent, target, maxSpeed, maxAcceleration, targetRadius, slowRadius, timeToTarget);
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update(){
 
-    	direction = target.transform.position - agent.transform.position;
+      dArrive.doYourThing();
 
-    	distance = direction.magnitude;
-
-    	if (distance < targetRadius){
-
-    		return;
-
-    	}
-
-    	if (distance > slowRadius){
-
-    		targetSpeed = maxSpeed;
-
-    	}
-    	else{
-
-    		targetSpeed = maxSpeed*distance/slowRadius;
-
-    	}
-    	targetVelocity = direction;
-    	targetVelocity.Normalize();
-   		targetVelocity = new Vector3((float)targetSpeed*targetVelocity[0], (float)targetSpeed*targetVelocity[1], (float)targetSpeed*targetVelocity[2]);
-   		linear = targetVelocity + direction;
-   		linear = new Vector3(linear[0]/(float)timeToTarget, linear[1]/(float)timeToTarget, linear[2]/(float)timeToTarget);
-
-   		if (linear.magnitude > maxAcceleration){
-
-   			linear.Normalize();
-   			linear = new Vector3((float)maxAcceleration*linear[0], (float)maxAcceleration*linear[1], (float)maxAcceleration*linear[2]);
-
-   		}
-
-   		velocity += new Vector3((float)time*linear[0], (float)time*linear[1], (float)time*linear[2]);
-   		agent.transform.position += new Vector3((float)time*velocity[0], (float)time*velocity[1], (float)time*velocity[2]);
-        
-      agent.transform.rotation = agent.newOrientation(agent.transform.rotation, direction);
     }
 
 }

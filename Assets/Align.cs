@@ -13,18 +13,11 @@ public class Align : MonoBehaviour
 	public double targetRadius = 0.001;
 	public double slowRadius = 0.001;
 	public double timeToTarget = 0.1;
-	double rotation;
-	double angular;
-	double time;
-	double angularAcceleration;
-	double rotationSize;
-	double targetRotation;
-	Vector3 agentRotation;
-
+    alignComp align;
 
     void Start(){
 
-        time = Time.deltaTime;
+        align = new alignComp(agent, target, maxAngularAcceleration, maxRotation, targetRadius, slowRadius, timeToTarget);
 
     }
 
@@ -32,50 +25,8 @@ public class Align : MonoBehaviour
     void Update()
     {
 
-        this.doYourThing();
+        align.doYourThing();
         
     }
-
-    public void doYourThing(){
-
-        rotation = target.transform.rotation.eulerAngles.z - agent.transform.rotation.eulerAngles.z;
-        rotation = rotation/57;
-
-        rotationSize = Math.Abs(rotation);
-
-        if (rotationSize < targetRadius){
-
-            return;
-
-        }
-
-        if (rotationSize > slowRadius){
-
-            targetRotation = maxRotation;
-
-        }
-        else{
-
-            targetRotation = maxRotation*rotationSize/slowRadius;
-
-        }
-
-        targetRotation = rotation*targetRotation/rotationSize;
-
-        angular = targetRotation - agent.transform.rotation.eulerAngles.z/57;
-        angular = angular/timeToTarget;
-
-        angularAcceleration = Math.Abs(angular);
-
-        if (angularAcceleration > maxAngularAcceleration){
-
-            angular = angular/angularAcceleration;
-            angular = angular*maxAngularAcceleration;
-
-        }
-
-        agentRotation.z += (float)time*(float)angular;
-        agent.transform.rotation = Quaternion.Euler(agentRotation);
-
-    }
+    
 }

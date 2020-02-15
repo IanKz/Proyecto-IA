@@ -53,26 +53,40 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Aestrella.cs" />
      <Compile Include="Assets\Agent.cs" />
      <Compile Include="Assets\agentMovement.cs" />
      <Compile Include="Assets\Align.cs" />
+     <Compile Include="Assets\alignComp.cs" />
      <Compile Include="Assets\Arrive.cs" />
      <Compile Include="Assets\CollisionAvoidance.cs" />
      <Compile Include="Assets\control.cs" />
+     <Compile Include="Assets\dArriveComp.cs" />
+     <Compile Include="Assets\dSeekComp.cs" />
      <Compile Include="Assets\dynamicArriving.cs" />
      <Compile Include="Assets\dynamicSeek.cs" />
      <Compile Include="Assets\Face.cs" />
+     <Compile Include="Assets\General.cs" />
+     <Compile Include="Assets\Grafo.cs" />
      <Compile Include="Assets\jumpingPoint.cs" />
+     <Compile Include="Assets\Lado.cs" />
      <Compile Include="Assets\Movement.cs" />
      <Compile Include="Assets\NewBehaviourScript.cs" />
+     <Compile Include="Assets\Nodo.cs" />
      <Compile Include="Assets\ObstacleAvoidance.cs" />
+     <Compile Include="Assets\Prueba.cs" />
      <Compile Include="Assets\Pursue.cs" />
+     <Compile Include="Assets\pursueComp.cs" />
      <Compile Include="Assets\rotate.cs" />
      <Compile Include="Assets\RotateTarget.cs" />
      <Compile Include="Assets\seek.cs" />
+     <Compile Include="Assets\seekComp.cs" />
      <Compile Include="Assets\Steering.cs" />
+     <Compile Include="Assets\test.cs" />
      <Compile Include="Assets\velocityMatching.cs" />
+     <Compile Include="Assets\vMatchingComp.cs" />
      <Compile Include="Assets\Wandering.cs" />
+     <Compile Include="Assets\wanderingComp.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/Alan/Documents/IA-Proyecto/Proyecto-IA/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

@@ -9,6 +9,13 @@ public class Face : Align
    	Vector3 direction;
    	Vector3 rotationVector;
    	Agent newTarget;
+    alignComp align;
+
+    void Start(){
+
+        align = new alignComp(agent, target, maxAngularAcceleration, maxRotation, targetRadius, slowRadius, timeToTarget);
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -30,7 +37,7 @@ public class Face : Align
 
     	target = newTarget;
 
-    	this.doYourThing();
+    	align.doYourThing();
         
     }
 }

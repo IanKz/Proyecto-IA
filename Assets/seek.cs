@@ -9,13 +9,13 @@ public class seek : MonoBehaviour
 	public Agent agent;
 	public Agent target;
 	Vector3 rotationVector;
-	double time;
+	seekComp sk;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-     
-     	time = Time.deltaTime;
+
+    	sk = new seekComp(agent, target);
 
     }
 
@@ -23,20 +23,9 @@ public class seek : MonoBehaviour
     void Update()
     {
         
-        this.getSteering();
+        sk.getSteering();
 
     }
 
-    protected void getSteering(){
-
-        agent.velocity = target.transform.position - agent.transform.position;
-        agent.velocity.Normalize();
-        agent.velocity += new Vector3((float)agent.maxSpeed*agent.velocity[0], (float)agent.maxSpeed*agent.velocity[1], (float)agent.maxSpeed*agent.velocity[2]);
-
-        agent.transform.position += new Vector3((float)time*agent.velocity[0], (float)time*agent.velocity[1], 0);
-
-        agent.transform.rotation = agent.newOrientation(agent.transform.rotation, agent.velocity);
-
-    }
 
 }

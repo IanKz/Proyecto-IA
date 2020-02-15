@@ -10,10 +10,13 @@ public class ObstacleAvoidance : dynamicSeek
 	public float lookahead;
 	Vector3 ray;
 	public List<GameObject> obstacles;
+    dSeekComp dsc;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        dsc = new dSeekComp(agent, target, maxAcceleration, targetPos);
 
     }
 
@@ -39,7 +42,7 @@ public class ObstacleAvoidance : dynamicSeek
 
     	if(!agent.col){
 
-    		this.getSteering();
+    		dsc.doYourThing();
 
     	}
     	else{
