@@ -32,6 +32,7 @@ public class Agent : MonoBehaviour
 
     void Start()
     {
+        
         steering = new Steering();
         velocity = Vector3.zero;
         jump = false;

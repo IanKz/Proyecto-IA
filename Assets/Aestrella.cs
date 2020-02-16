@@ -1,25 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace Proyecto
 {
     class Aestrella
     {
 
-        private List<Nodo> camino = new List<Nodo>();
-        private List<Nodo> abiertos = new List<Nodo>();
-        private List<List<double>> heuristicas = new List<List<double>>();
-        private bool encontrado;
-        private List<int> g = new List<int>();
+        public int k = 0;
 
         public List<Nodo> Ejecutar(Nodo inicio, Nodo final, Grafo grafoActual)
         {
+
+            List<List<double>> heuristicas = new List<List<double>>();
+            bool encontrado;
+
+            List<Nodo> camino = new List<Nodo>();
 
             encontrado = false;
             double g;
             double gNuevo;
             Nodo actual = inicio;
+            List<Nodo> caminoAux = new List<Nodo>();
 
             heuristicas = grafoActual.getHeurtistica();
             List<Nodo> abiertos = new List<Nodo>();
@@ -31,7 +34,7 @@ namespace Proyecto
             while(abiertos.Count > 0 && !encontrado)
             {
 
-                Nodo minimo = getMinF(abiertos, grafoActual, final);
+                Nodo minimo = getMinF(abiertos, grafoActual, final, heuristicas);
                 cerrados.Add(minimo);
                 abiertos.Remove(minimo);
 
@@ -70,6 +73,7 @@ namespace Proyecto
 
                                 vecinos[i].SetDistDesdeInicio(gNuevo);
                                 vecinos[i].SetPredecesor(minimo);
+
                                 if (cerrados.Contains(vecinos[i]))
                                 {
                                     cerrados.Remove(vecinos[i]);
@@ -93,16 +97,26 @@ namespace Proyecto
 
                 while (!(actual.GetPredecesor() == null))
                 {
-                    camino.Add(actual);
+
+                    caminoAux.Add(actual);
                     actual = actual.GetPredecesor();
 
+
                 }
-                camino.Add(inicio);
+
+                caminoAux.Add(inicio);
+
             }
             else
             {
 
-                camino.Add(inicio);
+                caminoAux.Add(inicio);
+
+            }
+
+            for (int i = 0; i < caminoAux.Count; i = i + 1){
+
+                camino.Add(caminoAux[caminoAux.Count - 1 - i]);
 
             }
 
@@ -110,7 +124,7 @@ namespace Proyecto
 
         }
 
-        public Nodo getMinF(List<Nodo> abiertos, Grafo grafoActual, Nodo final)
+        public Nodo getMinF(List<Nodo> abiertos, Grafo grafoActual, Nodo final, List<List<double>> heuristicas)
         {
             int index = 0;
             Nodo nodoDevuelto = abiertos[index];
@@ -120,8 +134,6 @@ namespace Proyecto
 
                 foreach (Nodo n in abiertos)
                 {
-
-                    int indice = grafoActual.GetIndiceDe(n);
 
                     if((n.GetDistDesdeInicio() + heuristicas[grafoActual.GetIndiceDe(n)][grafoActual.GetIndiceDe(final)] < nodoDevuelto.GetDistDesdeInicio() + heuristicas[grafoActual.GetIndiceDe(nodoDevuelto)][grafoActual.GetIndiceDe(final)])){
 

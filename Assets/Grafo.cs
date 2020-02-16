@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using pc;
 
 namespace Proyecto
 {
@@ -292,6 +293,29 @@ namespace Proyecto
             }
 
             return false;
+
+        }
+
+        public Nodo darNodoContenedor(Vector3 pos){
+
+            Nodo nodoAux = new Nodo(new Tuple<double, double>(0, 0), 
+                      new Tuple<double, double>(0, 0), 
+                      new Tuple<double, double>(0, 0));;
+
+            pointChecker pc = new pointChecker();
+
+            foreach(Nodo n in nodosEnGrafo){
+
+                if (pc.isInside(n.GetPrimerVertice(), n.GetSegundoVertice(), n.GetTercerVertice(), pos)){
+
+                    nodoAux = n;
+                    break;
+
+                }
+
+            }
+
+            return nodoAux;
 
         }
 

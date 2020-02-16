@@ -30,7 +30,6 @@ namespace pc
             double y3 = t3.Item2;
             double x = t4[0];
             double y = t4[1];
-            Debug.Log("La posición es: " + x + "," + y);
 
             /* Calculate area of triangle ABC */
             double A = area(x1, y1, x2, y2, x3, y3); 
