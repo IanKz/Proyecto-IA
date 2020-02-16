@@ -5,7 +5,7 @@ using UnityEngine;
 public class dArriveComp
 {
 	Agent agent;
-	Agent target;
+	Vector3 target;
 	double maxSpeed;
 	double maxAcceleration;
 	double targetRadius;
@@ -15,7 +15,7 @@ public class dArriveComp
 	Vector3 velocity;
 
     // Start is called before the first frame update
-    public dArriveComp(Agent agente, Agent objetivo, double maxS, double maxA, double targetR, double slowR, double timeToT){
+    public dArriveComp(Agent agente, Vector3 objetivo, double maxS, double maxA, double targetR, double slowR, double timeToT){
 
     	agent = agente;
     	target = objetivo;
@@ -38,7 +38,7 @@ public class dArriveComp
   		Vector3 targetVelocity;
   		Vector3 linear;
 
-    	direction = target.transform.position - agent.transform.position;
+    	direction = target - agent.transform.position;
 
     	distance = direction.magnitude;
 

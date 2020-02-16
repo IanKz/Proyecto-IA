@@ -16,7 +16,7 @@ public class dynamicSeek : MonoBehaviour
     void Start()
     {
         
-        dsc = new dSeekComp(agent, target, maxAcceleration, targetPos);
+        dsc = new dSeekComp(agent, target.transform.position, maxAcceleration, targetPos);
 
     }
 

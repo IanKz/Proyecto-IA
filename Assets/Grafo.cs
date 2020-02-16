@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace Proyecto
 {
@@ -16,9 +17,9 @@ namespace Proyecto
             Nodo nodoAux;
             Nodo nodoAux2;
 
-            for (int i = 0; i < 20; i = i + 2;){
+            for (int i = 0; i < 20; i = i + 2){
 
-                if (i == 4 || i == 14){
+                if ((i == 4) || (i == 14)){
 
                     continue;
 
@@ -54,7 +55,7 @@ namespace Proyecto
 
             nodoAux = new Nodo(new Tuple<double, double>(-6, 5), 
                        new Tuple<double, double>(-4, 5), 
-                       new Tuple<double, double>(-4, 3))
+                       new Tuple<double, double>(-4, 3));
 
             this.AgregarNodo(nodoAux);
 
@@ -66,7 +67,7 @@ namespace Proyecto
 
             nodoAux = new Nodo(new Tuple<double, double>(-6, -3), 
                        new Tuple<double, double>(-4, -3), 
-                       new Tuple<double, double>(-4, -5))
+                       new Tuple<double, double>(-4, -5));
 
             this.AgregarNodo(nodoAux);
 
@@ -80,7 +81,7 @@ namespace Proyecto
 
             nodoAux = new Nodo(new Tuple<double, double>(4, 5), 
                        new Tuple<double, double>(6, 5), 
-                       new Tuple<double, double>(6, 3))
+                       new Tuple<double, double>(6, 3));
 
             this.AgregarNodo(nodoAux);
 
@@ -92,7 +93,7 @@ namespace Proyecto
 
             nodoAux = new Nodo(new Tuple<double, double>(4, -3), 
                        new Tuple<double, double>(6, -3), 
-                       new Tuple<double, double>(6, -5))
+                       new Tuple<double, double>(6, -5));
 
             this.AgregarNodo(nodoAux);
 
@@ -104,23 +105,36 @@ namespace Proyecto
 
             List<Nodo> listaNodos = this.GetListaNodos();
 
+            int j = 0;
+
             foreach (Nodo n1 in listaNodos){
 
                 foreach (Nodo n2 in listaNodos){
+
+                    j = j + 1;
 
                     if (n2.Equals(n1)){
 
                         continue;
 
                     }
-                    else if(!isLadoInGrafo(n1, n2)){
+                    else if(isLadoInGrafo(n1, n2)){
 
                         continue;
 
                     }
                     else{
 
-                        this.AgregarLado(n1, n2);
+                        if( (((n1.GetPrimerVertice().Equals(n2.GetPrimerVertice())) || (n1.GetPrimerVertice().Equals(n2.GetSegundoVertice())) || (n1.GetPrimerVertice().Equals(n2.GetTercerVertice()))) &&
+                            ((n1.GetSegundoVertice().Equals(n2.GetPrimerVertice())) || (n1.GetSegundoVertice().Equals(n2.GetSegundoVertice())) || (n1.GetSegundoVertice().Equals(n2.GetTercerVertice())))) || 
+                            (((n1.GetPrimerVertice().Equals(n2.GetPrimerVertice())) || (n1.GetPrimerVertice().Equals(n2.GetSegundoVertice())) || (n1.GetPrimerVertice().Equals(n2.GetTercerVertice()))) &&
+                            ((n1.GetTercerVertice().Equals(n2.GetPrimerVertice())) || (n1.GetTercerVertice().Equals(n2.GetSegundoVertice())) || (n1.GetTercerVertice().Equals(n2.GetTercerVertice())))) ||
+                            (((n1.GetSegundoVertice().Equals(n2.GetPrimerVertice())) || (n1.GetSegundoVertice().Equals(n2.GetSegundoVertice())) || (n1.GetSegundoVertice().Equals(n2.GetTercerVertice()))) &&
+                            ((n1.GetTercerVertice().Equals(n2.GetPrimerVertice())) || (n1.GetTercerVertice().Equals(n2.GetSegundoVertice())) || (n1.GetTercerVertice().Equals(n2.GetTercerVertice()))))){
+
+                                this.AgregarLado(n1, n2);
+
+                            }
 
                     }
 
@@ -195,10 +209,11 @@ namespace Proyecto
 
         }
 
-        public void AgregarLado(Nodo nodoInicial, Nodo nodoFinal, double peso)
+        public void AgregarLado(Nodo nodoInicial, Nodo nodoFinal)
         {
 
             Lado nuevoLado = new Lado(nodoInicial, nodoFinal);
+            this.ladosEnGrafo.Add(nuevoLado);
 
         }
 
@@ -268,7 +283,7 @@ namespace Proyecto
 
             foreach (Lado l in GetListaLados()){
 
-                if ((l.GetNodoInicial == inicio && l.GetNodoFinal == final) || (l.GetNodoInicial == final && l.GetNodoFinal == inicial)){
+                if ((l.GetNodoInicial().Equals(inicio) && l.GetNodoFinal().Equals(final)) || (l.GetNodoInicial().Equals(final) && l.GetNodoFinal().Equals(inicio))){
 
                     return true;
 

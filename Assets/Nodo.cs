@@ -14,7 +14,6 @@ namespace Proyecto
         private Nodo sucesor = null;
         private double distDesdeInicio = double.MaxValue;
         private Tuple<double, double> centro;
-        private String nombre;
 
         public Nodo(Tuple<double, double> v1, Tuple<double, double> v2, Tuple<double, double> v3)
         {
@@ -26,11 +25,11 @@ namespace Proyecto
 
         }
 
-        public Tuple<double, double> GetPrimerVertice => this.primerVertice;
+        public Tuple<double, double> GetPrimerVertice() => this.primerVertice;
 
-        public Tuple<double, double> GetSegundoVertice => this.segundoVertice;
+        public Tuple<double, double> GetSegundoVertice() => this.segundoVertice;
 
-        public Tuple<double, double> GetTercerVertice => this.tercerVertice;
+        public Tuple<double, double> GetTercerVertice() => this.tercerVertice;
 
         public Tuple<double, double> GetCentro => this.centro;
 
@@ -53,8 +52,6 @@ namespace Proyecto
         public void SetDistDesdeInicio(double i) => distDesdeInicio = i;
 
         public double GetDistDesdeInicio() => this.distDesdeInicio;
-
-        public String GetNombre => this.nombre;
 
     }
 }

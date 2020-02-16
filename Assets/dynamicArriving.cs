@@ -19,7 +19,7 @@ public class dynamicArriving : MonoBehaviour
     void Start()
     {
 
-     	dArrive = new dArriveComp(agent, target, maxSpeed, maxAcceleration, targetRadius, slowRadius, timeToTarget);
+     	dArrive = new dArriveComp(agent, target.transform.position, maxSpeed, maxAcceleration, targetRadius, slowRadius, timeToTarget);
         
     }
 

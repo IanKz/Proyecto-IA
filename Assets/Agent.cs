@@ -5,7 +5,7 @@ using UnityEngine;
 public class Agent : MonoBehaviour
 {
 	
-	Vector3 position;
+	public Vector3 position;
 	public Vector3 velocity;
 	public float rotation;
     public JumpPoint jp = new JumpPoint();

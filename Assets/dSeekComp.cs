@@ -6,15 +6,15 @@ using System;
 public class dSeekComp{
 
 	Agent agent;
-	Agent target;
+	Vector3 target;
 	double maxAcceleration;
 	Vector3 targetPos;
 	double time;
 
-	public dSeekComp(Agent agente, Agent objetivo, double maxA, Vector3 targetP){
+	public dSeekComp(Agent agente, Vector3 posicionObj, double maxA, Vector3 targetP){
 
 		agent = agente;
-		target = objetivo;
+		target = posicionObj;
 		maxAcceleration = maxA;
 		targetPos = targetP;
 		time = Time.deltaTime;
@@ -23,7 +23,7 @@ public class dSeekComp{
 
 	public void doYourThing(){
 
-        agent.steering.linear = target.transform.position - agent.transform.position;
+        agent.steering.linear = target - agent.transform.position;
 
         agent.steering.linear.Normalize();
 

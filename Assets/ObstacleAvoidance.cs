@@ -16,7 +16,7 @@ public class ObstacleAvoidance : dynamicSeek
     void Start()
     {
 
-        dsc = new dSeekComp(agent, target, maxAcceleration, targetPos);
+        dsc = new dSeekComp(agent, target.transform.position, maxAcceleration, targetPos);
 
     }
 

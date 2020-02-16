@@ -74,6 +74,7 @@
      <Compile Include="Assets\NewBehaviourScript.cs" />
      <Compile Include="Assets\Nodo.cs" />
      <Compile Include="Assets\ObstacleAvoidance.cs" />
+     <Compile Include="Assets\pointChecker.cs" />
      <Compile Include="Assets\Prueba.cs" />
      <Compile Include="Assets\Pursue.cs" />
      <Compile Include="Assets\pursueComp.cs" />
@@ -81,6 +82,7 @@
      <Compile Include="Assets\RotateTarget.cs" />
      <Compile Include="Assets\seek.cs" />
      <Compile Include="Assets\seekComp.cs" />
+     <Compile Include="Assets\seekUsingGraph.cs" />
      <Compile Include="Assets\Steering.cs" />
      <Compile Include="Assets\test.cs" />
      <Compile Include="Assets\velocityMatching.cs" />

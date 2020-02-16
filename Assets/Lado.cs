@@ -16,8 +16,8 @@ namespace Proyecto
 
             this.nodoInicial = inicio;
             this.nodoFinal = fin;
-            this.pesoLado = Math.Sqrt((inicio.GetPrimerVertice.Item1 - fin.GetPrimerVertice.Item1) * (inicio.GetPrimerVertice.Item1 - fin.GetPrimerVertice.Item1) +
-              (inicio.GetPrimerVertice.Item2 - fin.GetPrimerVertice.Item2) * (inicio.GetPrimerVertice.Item2 - fin.GetPrimerVertice.Item2));
+            this.pesoLado = Math.Sqrt((inicio.GetPrimerVertice().Item1 - fin.GetPrimerVertice().Item1) * (inicio.GetPrimerVertice().Item1 - fin.GetPrimerVertice().Item1) +
+              (inicio.GetPrimerVertice().Item2 - fin.GetPrimerVertice().Item2) * (inicio.GetPrimerVertice().Item2 - fin.GetPrimerVertice().Item2));
             inicio.AgregarAdyacente(fin);
             fin.AgregarAdyacente(inicio);
             inicio.AgregarAdyacente(fin);
