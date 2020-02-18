@@ -56,9 +56,12 @@
      <Compile Include="Assets\Aestrella.cs" />
      <Compile Include="Assets\Agent.cs" />
      <Compile Include="Assets\agentMovement.cs" />
+     <Compile Include="Assets\AgentSM.cs" />
      <Compile Include="Assets\Align.cs" />
      <Compile Include="Assets\alignComp.cs" />
      <Compile Include="Assets\Arrive.cs" />
+     <Compile Include="Assets\chaseBlueState.cs" />
+     <Compile Include="Assets\ChaseGreenSate.cs" />
      <Compile Include="Assets\CollisionAvoidance.cs" />
      <Compile Include="Assets\control.cs" />
      <Compile Include="Assets\dArriveComp.cs" />
@@ -67,6 +70,7 @@
      <Compile Include="Assets\dynamicSeek.cs" />
      <Compile Include="Assets\Face.cs" />
      <Compile Include="Assets\General.cs" />
+     <Compile Include="Assets\gotToGreenTrans.cs" />
      <Compile Include="Assets\Grafo.cs" />
      <Compile Include="Assets\jumpingPoint.cs" />
      <Compile Include="Assets\Lado.cs" />
@@ -83,8 +87,11 @@
      <Compile Include="Assets\seek.cs" />
      <Compile Include="Assets\seekComp.cs" />
      <Compile Include="Assets\seekUsingGraph.cs" />
+     <Compile Include="Assets\seekUsingGraphComp.cs" />
+     <Compile Include="Assets\State.cs" />
      <Compile Include="Assets\Steering.cs" />
      <Compile Include="Assets\test.cs" />
+     <Compile Include="Assets\Transition.cs" />
      <Compile Include="Assets\velocityMatching.cs" />
      <Compile Include="Assets\vMatchingComp.cs" />
      <Compile Include="Assets\Wandering.cs" />
