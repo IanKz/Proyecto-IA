@@ -14,7 +14,7 @@ public class seekUsingGraph : MonoBehaviour
     void Start()
     {
 
-        sugc = new seekUsingGraphComp(agent, target, maxA);
+        sugc = new seekUsingGraphComp(agent, target.transform.position, maxA);
         
     }
 

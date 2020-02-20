@@ -16,6 +16,7 @@ public class Agent : MonoBehaviour
     Vector3 inicialScale;
     public bool jump = false;
     public bool col = false;
+    public bool cargado = false;
 
     public Agent(){
 

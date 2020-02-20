@@ -21,8 +21,7 @@ public class ChaseBlueState : State{
 		maxA = max;
 		transitionsList = transitions;
 		objetivo = obj;
-		name = "Chase Blue";
-		sugc = new seekUsingGraphComp(agente, objetivo, maxA);
+		sugc = new seekUsingGraphComp(agente, objetivo.transform.position, maxA);
 
 	}
 

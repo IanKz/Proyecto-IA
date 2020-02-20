@@ -6,7 +6,6 @@ using Proyecto;
 public class ChaseState : State{
 
 	List<Transition> transitionsList;
-	Agent objetivo;
 	string name;
 	Agent agente;
 	seekUsingGraphComp sugc;
@@ -15,14 +14,12 @@ public class ChaseState : State{
 	double maxA;
 
 
-	public ChaseState(Agent obj, Agent agent, List<Transition> transitions, double max){
+	public ChaseState(Vector3 targetPos, Agent agent, List<Transition> transitions, double max){
 
 		agente = agent;
 		maxA = max;
 		transitionsList = transitions;
-		objetivo = obj;
-		name = "Chase Green";
-		sugc = new seekUsingGraphComp(agente, objetivo, maxA);
+		sugc = new seekUsingGraphComp(agente, targetPos, maxA);
 
 	}
 

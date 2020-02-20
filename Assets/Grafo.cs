@@ -12,9 +12,11 @@ namespace Proyecto
         private List<List<double>> heuristics = new List<List<double>>();
         private List<Nodo> nodosEnGrafo = new List<Nodo>();
         private List<Lado> ladosEnGrafo = new List<Lado>();
+        private pointChecker pc;
 
         public Grafo(){
 
+            pc = new pointChecker();
             Nodo nodoAux;
             Nodo nodoAux2;
 
@@ -301,8 +303,6 @@ namespace Proyecto
             Nodo nodoAux = new Nodo(new Tuple<double, double>(0, 0), 
                       new Tuple<double, double>(0, 0), 
                       new Tuple<double, double>(0, 0));;
-
-            pointChecker pc = new pointChecker();
 
             foreach(Nodo n in nodosEnGrafo){
 

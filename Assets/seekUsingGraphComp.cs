@@ -23,10 +23,10 @@ public class seekUsingGraphComp
 	Vector3 targetPos = Vector3.zero;
 
 
-    public seekUsingGraphComp(Agent agente, Agent objetivo, double max){
+    public seekUsingGraphComp(Agent agente, Vector3 objetivo, double max){
 
     	agent = agente;
-    	target = objetivo;
+    	targetPos = objetivo;
     	maxA = max;
         grafoActual = new Grafo();
         grafoActual.crearLados();
@@ -40,9 +40,10 @@ public class seekUsingGraphComp
 
     public void DoYourThing(){
 
-        Nodo destino = grafoActual.darNodoContenedor(target.transform.position);
+        Nodo destino = grafoActual.darNodoContenedor(targetPos);
 
         camino = A.Ejecutar(partida, destino, grafoActual);
+
         for (int j = 0; j < (camino.Count - 1); j = j + 1){
 
             Debug.DrawLine(new Vector3((float)camino[j].GetCentro.Item1, (float)camino[j].GetCentro.Item2, 0),
@@ -65,7 +66,7 @@ public class seekUsingGraphComp
 
         if(camino.Count <= actual){
 
-            actual = camino.Count - 1;
+            actual = 0;
 
         }
 
@@ -77,7 +78,7 @@ public class seekUsingGraphComp
 
         if(actual == (camino.Count - 1)){
 
-            dsc = new dSeekComp(agent, target.transform.position, maxA, Vector3.zero);
+            dsc = new dSeekComp(agent, targetPos, maxA, Vector3.zero);
             dsc.doYourThing();
 
         }

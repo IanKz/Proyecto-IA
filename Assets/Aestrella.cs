@@ -135,7 +135,7 @@ namespace Proyecto
                 foreach (Nodo n in abiertos)
                 {
 
-                    if((n.GetDistDesdeInicio() + heuristicas[grafoActual.GetIndiceDe(n)][grafoActual.GetIndiceDe(final)] < nodoDevuelto.GetDistDesdeInicio() + heuristicas[grafoActual.GetIndiceDe(nodoDevuelto)][grafoActual.GetIndiceDe(final)])){
+                    if((n.GetDistDesdeInicio() + heuristicas[grafoActual.GetListaNodos().IndexOf(n)][grafoActual.GetListaNodos().IndexOf(final)] < nodoDevuelto.GetDistDesdeInicio() + heuristicas[grafoActual.GetListaNodos().IndexOf(nodoDevuelto)][grafoActual.GetListaNodos().IndexOf(final)])){
 
                         nodoDevuelto = n;
 
