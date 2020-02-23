@@ -21,24 +21,27 @@ public class AgentSM : MonoBehaviour
     {
 
     	inicio = yo.transform.position;
+    	GameObject go = new GameObject();
+    	go.transform.position = meta;
+    	Agent ag = go.AddComponent<Agent>() as Agent;
         
     	estados = new List<State>();
 
     	List<Transition> buscandoTrans = new List<Transition>(); 
     	buscandoTrans.Add(new waitingForFoodTrans(yo, otro1, otro2, "Esperando"));
-    	buscandoTrans.Add(new tookFoodTrans(yo, meta, "Cargado"));
-    	ChaseState cfs = new ChaseState(meta, yo, buscandoTrans, maxA);
+    	buscandoTrans.Add(new tookFoodTrans(yo, ag, "Cargado"));
+    	ChaseState cfs = new ChaseState(ag, yo, buscandoTrans, maxA);
     	cfs.SetName("Buscando");
     	estados.Add(cfs);
 
     	List<Transition> cargadoTrans = new List<Transition>();
-    	cargadoTrans.Add(new depositadoTrans(yo, inicio, "Buscando"));
-    	cargadoState css = new cargadoState(yo, inicio, cargadoTrans, maxA);
+    	cargadoTrans.Add(new depositadoTrans(yo, yo, "Buscando"));
+    	cargadoState css = new cargadoState(yo, yo, cargadoTrans, maxA);
     	css.SetName("Cargado");
     	estados.Add(css);
 
     	List<Transition> esperandoTrans = new List<Transition>();
-    	esperandoTrans.Add(new depositadoTrans(yo, inicio, "Buscando"));
+    	esperandoTrans.Add(new depositadoTrans(yo, yo, "Buscando"));
     	esperandoState cts = new esperandoState(yo, esperandoTrans);
     	cts.SetName("Esperando");
     	estados.Add(cts);

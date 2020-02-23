@@ -14,8 +14,7 @@ public class seekUsingGraph : MonoBehaviour
     void Start()
     {
 
-        sugc = new seekUsingGraphComp(agent, target.transform.position, maxA);
-        
+        sugc = new seekUsingGraphComp(agent, target, maxA);
     }
 
     // Update is called once per frame

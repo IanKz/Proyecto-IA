@@ -14,12 +14,12 @@ public class ChaseState : State{
 	double maxA;
 
 
-	public ChaseState(Vector3 targetPos, Agent agent, List<Transition> transitions, double max){
+	public ChaseState(Agent target, Agent agent, List<Transition> transitions, double max){
 
 		agente = agent;
 		maxA = max;
 		transitionsList = transitions;
-		sugc = new seekUsingGraphComp(agente, targetPos, maxA);
+		sugc = new seekUsingGraphComp(agente, target, maxA);
 
 	}
 

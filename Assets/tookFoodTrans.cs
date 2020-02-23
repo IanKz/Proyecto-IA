@@ -9,9 +9,9 @@ public class tookFoodTrans : Transition
 	string targetState;
 	Vector3 pos;
 
-	public tookFoodTrans(Agent ag, Vector3 meta, string tS){
+	public tookFoodTrans(Agent ag, Agent obj, string tS){
 
-		pos = meta;
+		pos = obj.transform.position;
 		agente = ag;
 		targetState = tS; 
 

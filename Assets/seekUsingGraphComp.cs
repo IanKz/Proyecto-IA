@@ -13,34 +13,41 @@ public class seekUsingGraphComp
 	double maxA;
 	Grafo grafoActual;
 	Aestrella A;
-	Nodo partida;
 	List<Nodo> camino;
 	pointChecker pc;
 	int actual;
 	Vector3 ubicacionActual = Vector3.zero;
 	Vector3 actualPosition;
 	dSeekComp dsc;
+    dArriveComp dac;
 	Vector3 targetPos = Vector3.zero;
+    bool arrived;
+    double maxS = 100;
+    double slowR = 0.3;
+    double targetR = 0.1;
+    double timeToT = 0.1;
 
 
-    public seekUsingGraphComp(Agent agente, Vector3 objetivo, double max){
+    public seekUsingGraphComp(Agent agente, Agent objetivo, double max){
 
     	agent = agente;
-    	targetPos = objetivo;
+    	target = objetivo;
     	maxA = max;
         grafoActual = new Grafo();
         grafoActual.crearLados();
         A = new Aestrella();
         camino = new List<Nodo>();
         pc = new pointChecker();
-        partida = grafoActual.darNodoContenedor(agent.transform.position);
+        arrived = false;
+        
     	actual = 0;
 
     }
 
     public void DoYourThing(){
 
-        Nodo destino = grafoActual.darNodoContenedor(targetPos);
+        Nodo partida = grafoActual.darNodoContenedor(agent.transform.position);
+        Nodo destino = grafoActual.darNodoContenedor(target.transform.position);
 
         camino = A.Ejecutar(partida, destino, grafoActual);
 
@@ -64,6 +71,22 @@ public class seekUsingGraphComp
 
         }
 
+        if (arrived){
+
+            if (!partida.Equals(destino)){
+
+                arrived = false;
+
+            }
+            else{
+
+                dac = new dArriveComp(agent, target.transform.position, maxA, maxS, targetR, slowR, timeToT);
+                dac.doYourThing();
+
+            }
+
+        }
+
         if(camino.Count <= actual){
 
             actual = 0;
@@ -76,18 +99,27 @@ public class seekUsingGraphComp
             actual = actual + 1;
         }
 
-        if(actual == (camino.Count - 1)){
+        if(camino.Count <= actual){
 
-            dsc = new dSeekComp(agent, targetPos, maxA, Vector3.zero);
-            dsc.doYourThing();
+            actual = 0;
+
+        }
+
+        if(partida.Equals(destino)){
+
+            dac = new dArriveComp(agent, target.transform.position, maxA, maxS, targetR, slowR, timeToT);
+            dac.doYourThing();
+        //    dsc = new dSeekComp(agent, target.transform.position, maxA, Vector3.zero);
+        //    dsc.doYourThing();
+            arrived = true;
 
         }
         else{
 
-            Vector3 objetivoActual = new Vector3((float)camino[actual].GetCentro.Item1, (float)camino[actual].GetCentro.Item2, 0);
+                Vector3 objetivoActual = new Vector3((float)camino[actual].GetCentro.Item1, (float)camino[actual].GetCentro.Item2, 0);
 
-            dsc = new dSeekComp(agent, objetivoActual, maxA, objetivoActual);
-            dsc.doYourThing();
+                dac = new dArriveComp(agent, objetivoActual, maxA, maxS, targetR, slowR, timeToT);
+                dac.doYourThing();
 
         }
 

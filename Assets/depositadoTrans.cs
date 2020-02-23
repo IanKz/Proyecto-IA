@@ -9,10 +9,10 @@ public class depositadoTrans : Transition
 	Agent agente;
 	string targetState;
 
-	public depositadoTrans(Agent ag, Vector3 meta, string tS){
+	public depositadoTrans(Agent ag, Agent obj, string tS){
 
 		agente = ag;
-		pos = meta;
+		pos = obj.transform.position;
 		targetState = tS;
 
 	}

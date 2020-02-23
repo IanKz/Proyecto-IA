@@ -6,17 +6,18 @@ using Proyecto;
 public class cargadoState : State{
 
 	Agent agente;
+	Agent objetivo;
 	List<Transition> transitionsList;
 	Vector3 meta;
 	seekUsingGraphComp sugc;
 	string name;
 
-	public cargadoState(Agent ag, Vector3 pos, List<Transition> transitions, double maxA){
+	public cargadoState(Agent ag, Agent obj, List<Transition> transitions, double maxA){
 
 		agente = ag;
 		transitionsList = transitions;
-		meta = pos;
-		sugc = new seekUsingGraphComp(agente, meta, maxA);
+		objetivo = obj;
+		sugc = new seekUsingGraphComp(agente, objetivo, maxA);
 
 	}
 

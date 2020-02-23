@@ -8,7 +8,8 @@ namespace Proyecto
     class Aestrella
     {
 
-        public int k = 0;
+        Nodo actual;
+
 
         public List<Nodo> Ejecutar(Nodo inicio, Nodo final, Grafo grafoActual)
         {
@@ -16,12 +17,18 @@ namespace Proyecto
             List<List<double>> heuristicas = new List<List<double>>();
             bool encontrado;
 
+            foreach (Nodo n in grafoActual.GetListaNodos()){
+
+                n.SetDistDesdeInicio(Double.PositiveInfinity);
+                n.SetPredecesor(null);
+
+            }
+
             List<Nodo> camino = new List<Nodo>();
 
             encontrado = false;
             double g;
             double gNuevo;
-            Nodo actual = inicio;
             List<Nodo> caminoAux = new List<Nodo>();
 
             heuristicas = grafoActual.getHeurtistica();
@@ -31,7 +38,7 @@ namespace Proyecto
 
             List<Nodo> cerrados = new List<Nodo>();
 
-            while(abiertos.Count > 0 && !encontrado)
+            while(abiertos.Count > 0)
             {
 
                 Nodo minimo = getMinF(abiertos, grafoActual, final, heuristicas);
@@ -100,7 +107,6 @@ namespace Proyecto
 
                     caminoAux.Add(actual);
                     actual = actual.GetPredecesor();
-
 
                 }
 
