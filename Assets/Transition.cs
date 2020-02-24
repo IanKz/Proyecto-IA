@@ -7,4 +7,6 @@ public abstract class Transition{
 
     public abstract string GetTargetState();
 
+    public abstract string GetName();
+
 }

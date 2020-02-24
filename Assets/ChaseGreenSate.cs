@@ -14,7 +14,7 @@ public class ChaseState : State{
 	double maxA;
 
 
-	public ChaseState(Agent target, Agent agent, List<Transition> transitions, double max){
+	public ChaseState(Agent agent, Agent target, List<Transition> transitions, double max){
 
 		agente = agent;
 		maxA = max;

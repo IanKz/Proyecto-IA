@@ -70,6 +70,8 @@
      <Compile Include="Assets\dSeekComp.cs" />
      <Compile Include="Assets\dynamicArriving.cs" />
      <Compile Include="Assets\dynamicSeek.cs" />
+     <Compile Include="Assets\enMetaTrans.cs" />
+     <Compile Include="Assets\esperandoDesaparezcaState.cs" />
      <Compile Include="Assets\esperandoState.cs" />
      <Compile Include="Assets\Face.cs" />
      <Compile Include="Assets\General.cs" />
@@ -101,6 +103,7 @@
      <Compile Include="Assets\waitingForFoodTrans.cs" />
      <Compile Include="Assets\Wandering.cs" />
      <Compile Include="Assets\wanderingComp.cs" />
+     <Compile Include="Assets\yaNoEnMetaTrans.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/Alan/Documents/IA-Proyecto/Proyecto-IA/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

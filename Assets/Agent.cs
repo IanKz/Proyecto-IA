@@ -17,6 +17,9 @@ public class Agent : MonoBehaviour
     public bool jump = false;
     public bool col = false;
     public bool cargado = false;
+    int tiempoPuesto = 0;
+
+    bool enMeta = false;
 
     public Agent(){
 
@@ -48,7 +51,7 @@ public class Agent : MonoBehaviour
             velocity += steering.linear * Time.deltaTime;
 
             rotation += steering.angular * Time.deltaTime;
-            transform.position += velocity * Time.deltaTime;
+            transform.position += new Vector3(velocity[0] * Time.deltaTime, velocity[1] * Time.deltaTime, 0f);
             transform.rotation = Quaternion.Euler(0,0,transform.rotation.eulerAngles.z + rotation * Time.deltaTime * Mathf.Rad2Deg);
             // Update velocity and rotation
 
@@ -95,6 +98,23 @@ public class Agent : MonoBehaviour
         
 	}
 
+    public Vector3 GetInitialScale(){
+
+        return inicialScale;
+
+    }
+
+    public bool GetEnMeta(){
+
+        return enMeta;
+
+    }
+
+    public void SetEnMeta(bool b){
+
+        enMeta = b;
+
+    }
 
     public Quaternion newOrientation(Quaternion current, Vector3 velocity){
         // Make sure we have a velocity.
@@ -106,5 +126,16 @@ public class Agent : MonoBehaviour
         }
     } 
 
+    public int GetTiempoPuesto(){
+
+        return tiempoPuesto;
+
+    }
+
+    public void SetTiempoPuesto(int tiempo){
+
+        tiempoPuesto = tiempo;
+
+    }
 
 }

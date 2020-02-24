@@ -5,23 +5,26 @@ using UnityEngine;
 public class waitingForFoodTrans : Transition
 {
 
-	Agent negro;
-	Agent azul;
-	Agent agente;
+	Agent otro2;
+	Agent otro1;
 	string targetState;
+	public override string GetName(){
+	
+		return "waitingForFood";
+	
+	}
 
-	public waitingForFoodTrans(Agent ag, Agent a, Agent n, string tS){
+	public waitingForFoodTrans(Agent a, Agent n, string tS){
 
-		azul = a;
-		negro = n;
-		agente = ag;
+		otro2 = a;
+		otro1 = n;
 		targetState = tS; 
 
 	}
 
 	public override bool IsTriggered(){
 
-		if(negro.cargado || azul.cargado){
+		if(otro1.cargado || otro2.cargado){
 
 			return true;
 

@@ -14,6 +14,7 @@ namespace Proyecto
         private Nodo sucesor = null;
         private double distDesdeInicio = double.MaxValue;
         private Tuple<double, double> centro;
+        private int altura = 0;
 
         public Nodo(Tuple<double, double> v1, Tuple<double, double> v2, Tuple<double, double> v3)
         {
@@ -52,6 +53,10 @@ namespace Proyecto
         public void SetDistDesdeInicio(double i) => distDesdeInicio = i;
 
         public double GetDistDesdeInicio() => this.distDesdeInicio;
+
+        public int GetAltura() => this.altura;
+
+        public void SetAltura(int alt) => altura = alt;
 
     }
 }

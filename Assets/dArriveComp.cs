@@ -72,7 +72,7 @@ public class dArriveComp
    		}
 
    		velocity += new Vector3((float)time*linear[0], (float)time*linear[1], (float)time*linear[2]);
-   		agent.transform.position += new Vector3((float)time*velocity[0], (float)time*velocity[1], (float)time*velocity[2]);
+   		agent.transform.position += new Vector3((float)time*velocity[0], (float)time*velocity[1], 0);
         
       agent.transform.rotation = agent.newOrientation(agent.transform.rotation, direction);
 

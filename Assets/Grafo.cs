@@ -53,24 +53,28 @@ namespace Proyecto
             nodoAux = new Nodo(new Tuple<double, double>(-6, 5), 
                       new Tuple<double, double>(-6, 3), 
                       new Tuple<double, double>(-4, 3));
+            nodoAux.SetAltura(-1);
 
             this.AgregarNodo(nodoAux);
 
             nodoAux = new Nodo(new Tuple<double, double>(-6, 5), 
                        new Tuple<double, double>(-4, 5), 
                        new Tuple<double, double>(-4, 3));
+            nodoAux.SetAltura(-1);
 
             this.AgregarNodo(nodoAux);
 
             nodoAux = new Nodo(new Tuple<double, double>(-6, -3), 
                       new Tuple<double, double>(-6, -5), 
                       new Tuple<double, double>(-4, -5));
+            nodoAux.SetAltura(1);
 
             this.AgregarNodo(nodoAux);
 
             nodoAux = new Nodo(new Tuple<double, double>(-6, -3), 
                        new Tuple<double, double>(-4, -3), 
                        new Tuple<double, double>(-4, -5));
+            nodoAux.SetAltura(1);
 
             this.AgregarNodo(nodoAux);
 
@@ -79,24 +83,28 @@ namespace Proyecto
             nodoAux = new Nodo(new Tuple<double, double>(4, 5), 
                       new Tuple<double, double>(4, 3), 
                       new Tuple<double, double>(6, 3));
+            nodoAux.SetAltura(-1);
 
             this.AgregarNodo(nodoAux);
 
             nodoAux = new Nodo(new Tuple<double, double>(4, 5), 
                        new Tuple<double, double>(6, 5), 
                        new Tuple<double, double>(6, 3));
+            nodoAux.SetAltura(-1);
 
             this.AgregarNodo(nodoAux);
 
             nodoAux = new Nodo(new Tuple<double, double>(4, -3), 
                       new Tuple<double, double>(4, -5), 
                       new Tuple<double, double>(6, -5));
+            nodoAux.SetAltura(1);
 
             this.AgregarNodo(nodoAux);
 
             nodoAux = new Nodo(new Tuple<double, double>(4, -3), 
                        new Tuple<double, double>(6, -3), 
                        new Tuple<double, double>(6, -5));
+            nodoAux.SetAltura(1);
 
             this.AgregarNodo(nodoAux);
 

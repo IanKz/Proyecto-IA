@@ -8,6 +8,11 @@ public class depositadoTrans : Transition
 	Vector3 pos;
 	Agent agente;
 	string targetState;
+	public override string GetName(){
+	
+		return "depositado";
+	
+	}
 
 	public depositadoTrans(Agent ag, Agent obj, string tS){
 
@@ -19,8 +24,8 @@ public class depositadoTrans : Transition
 
 	public override bool IsTriggered(){
 
-		if((agente.transform.position.x - 0.1 <= pos[0] && pos[0] <= agente.transform.position.x + 0.1) && 
-            (agente.transform.position.y - 0.1 <= pos[1] && pos[1] <= agente.transform.position.y + 0.1)){
+		if((agente.transform.position.x - 0.5 <= pos[0] && pos[0] <= agente.transform.position.x + 0.5) && 
+            (agente.transform.position.y - 0.5 <= pos[1] && pos[1] <= agente.transform.position.y + 0.5)){
 
 			return true;
 

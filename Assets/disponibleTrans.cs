@@ -5,23 +5,28 @@ using UnityEngine;
 public class disponibleTrans : Transition
 {
 
-	Agent negro;
-	Agent azul;
-	Agent agente;
+	Agent otro1;
+	Agent otro2;
+	Agent yo;
 	string targetState;
+	public override string GetName(){
+	
+		return "disponible";
+	
+	}
 
 	public disponibleTrans(Agent ag, Agent a, Agent n, string tS){
 
-		azul = a;
-		negro = n;
-		agente = ag;
+		otro1 = a;
+		otro2 = n;
+		yo = ag;
 		targetState = tS; 
 
 	}
 
 	public override bool IsTriggered(){
 
-		if(!azul.cargado && !negro.cargado && !agente.cargado){
+		if(!otro1.cargado && !otro2.cargado && !yo.cargado){
 
 			return true;
 

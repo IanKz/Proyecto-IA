@@ -9,6 +9,12 @@ public class gotToTrans : Transition
 	Agent target;
 	string targetState;
 
+	public override string GetName(){
+	
+		return "goTo";
+	
+	}
+
 	public gotToTrans(Agent obj, Agent ag, string tS){
 
 		target = obj;

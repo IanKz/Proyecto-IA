@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Proyecto;
@@ -93,8 +94,8 @@ public class seekUsingGraphComp
 
         }
 
-        if ((agent.transform.position.x - 0.2 <= camino[actual].GetCentro.Item1 && camino[actual].GetCentro.Item1 <= agent.transform.position.x + 0.2) && 
-            (agent.transform.position.y - 0.2 <= camino[actual].GetCentro.Item2 && camino[actual].GetCentro.Item2 <= agent.transform.position.y + 0.2) &&
+        if ((agent.transform.position.x - 0.3 <= camino[actual].GetCentro.Item1 && camino[actual].GetCentro.Item1 <= agent.transform.position.x + 0.3) && 
+            (agent.transform.position.y - 0.3 <= camino[actual].GetCentro.Item2 && camino[actual].GetCentro.Item2 <= agent.transform.position.y + 0.3) &&
             actual != (camino.Count - 1)){
             actual = actual + 1;
         }
@@ -115,6 +116,25 @@ public class seekUsingGraphComp
 
         }
         else{
+
+                if(camino[actual].GetAltura() > partida.GetAltura()){
+
+                    agent.transform.position += new Vector3(0, 0, 0.01f);
+                    agent.transform.localScale += new Vector3(Math.Abs(agent.transform.position.z)*0.005f, Math.Abs(agent.transform.position.z)*0.005f, 0);
+
+                }
+                else if (camino[actual].GetAltura() < partida.GetAltura()){
+
+                    agent.transform.position -= new Vector3(0, 0, 0.01f);
+                    agent.transform.localScale -= new Vector3(Math.Abs(agent.transform.position.z)*0.005f, Math.Abs(agent.transform.position.z)*0.005f, 0);
+
+                }
+                else if((camino[actual].GetAltura() == 0) && (partida.GetAltura() == 0)) {
+
+                    agent.transform.position = new Vector3(agent.transform.position.x, agent.transform.position.y, 0);
+                    agent.transform.localScale = agent.GetInitialScale();
+
+                }
 
                 Vector3 objetivoActual = new Vector3((float)camino[actual].GetCentro.Item1, (float)camino[actual].GetCentro.Item2, 0);
 

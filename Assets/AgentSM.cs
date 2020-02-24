@@ -11,6 +11,7 @@ public class AgentSM : MonoBehaviour
 	public double maxA;
 	public Vector3 meta;
 	public string elEstado;
+    public GameObject goal;
 	Vector3 inicio;
 	List<State> estados;
 	Transition transicionDisparada;
@@ -20,33 +21,37 @@ public class AgentSM : MonoBehaviour
     void Start()
     {
 
-    	inicio = yo.transform.position;
     	GameObject go = new GameObject();
     	go.transform.position = meta;
     	Agent ag = go.AddComponent<Agent>() as Agent;
+
+        inicio = yo.transform.position;
+    	GameObject go1 = new GameObject();
+    	go1.transform.position = inicio;
+    	Agent ag1 = go1.AddComponent<Agent>() as Agent;
         
     	estados = new List<State>();
 
     	List<Transition> buscandoTrans = new List<Transition>(); 
-    	buscandoTrans.Add(new waitingForFoodTrans(yo, otro1, otro2, "Esperando"));
+    	buscandoTrans.Add(new waitingForFoodTrans(otro1, otro2, "Esperando"));
     	buscandoTrans.Add(new tookFoodTrans(yo, ag, "Cargado"));
-    	ChaseState cfs = new ChaseState(ag, yo, buscandoTrans, maxA);
-    	cfs.SetName("Buscando");
-    	estados.Add(cfs);
+    	ChaseState fs = new ChaseState(yo, ag, buscandoTrans, maxA);
+    	fs.SetName("Buscando");
+    	estados.Add(fs);
 
     	List<Transition> cargadoTrans = new List<Transition>();
-    	cargadoTrans.Add(new depositadoTrans(yo, yo, "Buscando"));
-    	cargadoState css = new cargadoState(yo, yo, cargadoTrans, maxA);
-    	css.SetName("Cargado");
-    	estados.Add(css);
+    	cargadoTrans.Add(new depositadoTrans(yo, ag1, "Buscando"));
+    	cargadoState ss = new cargadoState(yo, ag1, cargadoTrans, maxA);
+    	ss.SetName("Cargado");
+    	estados.Add(ss);
 
     	List<Transition> esperandoTrans = new List<Transition>();
-    	esperandoTrans.Add(new depositadoTrans(yo, yo, "Buscando"));
-    	esperandoState cts = new esperandoState(yo, esperandoTrans);
-    	cts.SetName("Esperando");
-    	estados.Add(cts);
+    	esperandoTrans.Add(new disponibleTrans(yo, otro1, otro2, "Buscando"));
+    	esperandoState ts = new esperandoState(yo, esperandoTrans);
+    	ts.SetName("Esperando");
+    	estados.Add(ts);
 
-    	estadoActual = cfs;
+    	estadoActual = fs;
 
     }
 
@@ -54,7 +59,7 @@ public class AgentSM : MonoBehaviour
     void Update()
     {
         
-    	Debug.Log("El estado actual es: " + estadoActual.GetName());
+        string viejoEstado = estadoActual.GetName();
 
     	transicionDisparada = null;
 
@@ -75,8 +80,6 @@ public class AgentSM : MonoBehaviour
 
     		foreach(State s in estados){
 
-    			Debug.Log("Mi estado es: " + s.GetName() + " el nuevo estado es: " + nuevoEstado + " y mi nombre es: " + yo.name);
-
     			if(s.GetName() == nuevoEstado){
 
     				estadoActual = s;
@@ -85,7 +88,25 @@ public class AgentSM : MonoBehaviour
 
     		}
 
+    		if(nuevoEstado == "Cargado"){
+                goal.SetActive(false);
+    			yo.cargado = true;
+
+    		}
+            else if (nuevoEstado == "Buscando"){
+
+                if(viejoEstado == "Cargado"){
+
+                    goal.SetActive(true);
+
+                }
+
+                yo.cargado = false;
+
+            }
+
     	}
+
     	elEstado = estadoActual.GetName();
 
     	estadoActual.GetAction();

@@ -9,6 +9,12 @@ public class tookFoodTrans : Transition
 	string targetState;
 	Vector3 pos;
 
+	public override string GetName(){
+	
+		return "tookFood";
+	
+	}
+
 	public tookFoodTrans(Agent ag, Agent obj, string tS){
 
 		pos = obj.transform.position;
@@ -21,7 +27,6 @@ public class tookFoodTrans : Transition
 
 		if((agente.transform.position.x - 0.1 <= pos[0] && pos[0] <= agente.transform.position.x + 0.1) && 
             (agente.transform.position.y - 0.1 <= pos[1] && pos[1] <= agente.transform.position.y + 0.1)){
-			agente.cargado = true;
 			return true;
 
 		}
