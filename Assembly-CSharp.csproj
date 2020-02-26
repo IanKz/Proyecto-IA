@@ -104,6 +104,7 @@
      <Compile Include="Assets\Wandering.cs" />
      <Compile Include="Assets\wanderingComp.cs" />
      <Compile Include="Assets\yaNoEnMetaTrans.cs" />
+     <None Include="Assets\FREE Food Pack\Shaders\Food.shader" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/Alan/Documents/IA-Proyecto/Proyecto-IA/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
