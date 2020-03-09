@@ -2,23 +2,24 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Proyecto;
+using System;
 
 public class esperandoState : State{
 
 	Agent agente;
+	Agent auxiliar;
 	List<Transition> transitionsList;
 	string name;
+	double maxA = 5;
+	seekUsingGraphComp sugc;
 
-	public esperandoState(Agent ag, List<Transition> transitions){
+	public esperandoState(List<Transition> transitions){
 
-		agente = ag;
 		transitionsList = transitions;
 
 	}
 
 	public override void GetAction(){
-
-		System.Threading.Thread.Sleep(250);
 
 	}
 

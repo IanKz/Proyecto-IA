@@ -12,6 +12,7 @@ public class AgentSM : MonoBehaviour
 	public Vector3 meta;
 	public string elEstado;
     public GameObject goal;
+    public Agent aux;
 	Vector3 inicio;
 	List<State> estados;
 	Transition transicionDisparada;
@@ -41,13 +42,14 @@ public class AgentSM : MonoBehaviour
 
     	List<Transition> cargadoTrans = new List<Transition>();
     	cargadoTrans.Add(new depositadoTrans(yo, ag1, "Buscando"));
+        cargadoTrans.Add(new intersectadoTrans(yo, "Buscando"));
     	cargadoState ss = new cargadoState(yo, ag1, cargadoTrans, maxA);
     	ss.SetName("Cargado");
     	estados.Add(ss);
 
     	List<Transition> esperandoTrans = new List<Transition>();
     	esperandoTrans.Add(new disponibleTrans(yo, otro1, otro2, "Buscando"));
-    	esperandoState ts = new esperandoState(yo, esperandoTrans);
+    	esperandoState ts = new esperandoState(esperandoTrans);
     	ts.SetName("Esperando");
     	estados.Add(ts);
 

@@ -29,7 +29,8 @@ public class Face : Align
 
     	}
 
-    	newTarget = new Agent();
+    	GameObject go = new GameObject();
+    	Agent newTarget = go.AddComponent<Agent>() as Agent;
 
     	newTarget.transform.position = target.transform.position;
     	rotationVector = new Vector3(0, 0, (float)Math.Atan2(-direction.x, direction.y));
